@@ -1,3 +1,6 @@
+#My Edit - Dont upload apks
+*.apk
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
