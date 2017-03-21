@@ -9,12 +9,15 @@ public class SettingsController : MonoBehaviour
     public Toggle onClearToggle;
     public Text onClearSubText;
 
+    public Text versionNumberText;
 
     void Start()
     {
         Initializer initializer = GameObject.FindGameObjectWithTag("Initializer").GetComponent<Initializer>();
         taskManager = initializer.taskManager;
         actionController = initializer.actionController;
+
+        versionNumberText.text = "Devote v" + Application.version;
 
         if (taskManager.stgAutoClear)
             onClearToggle.isOn = true;

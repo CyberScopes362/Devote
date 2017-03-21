@@ -61,10 +61,12 @@ public class EditMarks : MonoBehaviour
             var insAv = Instantiate(avPrefab);
             insAv.transform.SetParent(this.transform, false);
             insAv.transform.SetAsFirstSibling();
-            totalYPos += 70f;
+            totalYPos += 100f;
 
             float allAvMarks = 0;
+            float allAvMarksUnmoderated = 0;
             int allSubjCountForAv = 0;
+            int allMarksCountForRawAv = 0;
 
             foreach (TaskManager.Subject eachSubject in subjects)
             {
@@ -76,6 +78,7 @@ public class EditMarks : MonoBehaviour
 
                 List<int> thisMarks = new List<int>();
                 List<int> thisValue = new List<int>();
+                List<float> moderatedMarks = new List<float>();
 
                 foreach (MarksManager.Marks eachMark in marksManager.marks)
                 {
@@ -86,20 +89,27 @@ public class EditMarks : MonoBehaviour
                     }
                 }
 
+                float totalModerated = 0;
+                int totalValue = 0;
                 float avMarks = 0;
 
-                foreach (int mark in thisMarks)
+                for(int i = 0; i < thisValue.Count; i++)
                 {
-                    avMarks += mark;
-                    allAvMarks += mark;
-                    allSubjCountForAv += 1;
+                    totalValue += thisValue[i];
+                    moderatedMarks.Add(thisMarks[i] * thisValue[i] / 100f);
+                    totalModerated += moderatedMarks[i];
+
+                    allAvMarksUnmoderated += thisMarks[i];
+                    allMarksCountForRawAv += 1;
                 }
 
                 if (thisMarks.Count != 0)
-                    avMarks /= thisMarks.Count;
+                    avMarks = totalModerated * 100f / totalValue;
                 else
                     avMarks = 0;
 
+                allSubjCountForAv += 1;
+                allAvMarks += avMarks;
 
                 markScript.avMarkTextNo.text = "~ " + Mathf.RoundToInt(avMarks).ToString() + "%";
                 markScript.avMarkText.color = markScript.graphLineController.avLineColor;
@@ -140,11 +150,18 @@ public class EditMarks : MonoBehaviour
             }
 
             allAvMarks /= allSubjCountForAv;
+            allAvMarksUnmoderated /= allMarksCountForRawAv;
 
             if (allSubjCountForAv > 0)
+            {
                 insAv.GetComponent<AvMarkScript>().avMarkText.text = allAvMarks.ToString("F2") + "%";
+                insAv.GetComponent<AvMarkScript>().avMarkUnmoderatedText.text = allAvMarksUnmoderated.ToString("F2") + "%";
+            }
             else
+            {
                 insAv.GetComponent<AvMarkScript>().avMarkText.text = "--%";
+                insAv.GetComponent<AvMarkScript>().avMarkUnmoderatedText.text = "--%";
+            }
         }
     }
 }

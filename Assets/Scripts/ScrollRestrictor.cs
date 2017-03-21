@@ -115,7 +115,7 @@ public class ScrollRestrictor : MonoBehaviour
 
     void MarksScrollRestrictor()
     {
-        endPoint =  + additionalVerticalSpacing - 710 + defaultDistanceMin;
+        endPoint = additionalVerticalSpacing - 710 + defaultDistanceMin;
         blindOpen = blindController.blindOpen;
         totalYPos = editMarks.totalYPos;
         subjectsAmount = taskManager.subjects.Count;

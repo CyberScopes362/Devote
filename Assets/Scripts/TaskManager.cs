@@ -260,8 +260,11 @@ public class TaskManager : MonoBehaviour
 
         if(quotesAlreadyUsed != null)
         {
-            foreach (int quoteIndex in quotesAlreadyUsed)
-                allQuotes.RemoveAt(quoteIndex);
+            if(quotesAlreadyUsed.Count >= allQuotes.Count)
+                quotesAlreadyUsed.Clear();
+            else
+                foreach (int quoteIndex in quotesAlreadyUsed)
+                    allQuotes.RemoveAt(quoteIndex);
         }
 
         UpdateQuote();
@@ -269,21 +272,12 @@ public class TaskManager : MonoBehaviour
 
     void UpdateQuote()
     {
-        if(allQuotes.Count > 0)
-        {
-            int randomNo = UnityEngine.Random.Range(0, allQuotes.Count - 1);
-            //Add to list of used quotes index
-            quotesAlreadyUsed.Add(randomNo);
+        int randomNo = UnityEngine.Random.Range(0, allQuotes.Count - 1);
+        //Add to list of used quotes index
+        quotesAlreadyUsed.Add(randomNo);
 
-            quoteText.text = allQuotes[randomNo];
-            todaysQuote = quoteText.text;
-        }
-        else
-        {
-            //All quotes have been used!!
-            quoteText.text = "No more quotes for now! If Devote has helped you, please leave a rating on the Play Store!";
-            todaysQuote = quoteText.text;
-        }
+        quoteText.text = allQuotes[randomNo];
+        todaysQuote = quoteText.text;
 
         //Clear to save memory
         allQuotes.Clear();
