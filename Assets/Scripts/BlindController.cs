@@ -14,12 +14,16 @@ public class BlindController : MonoBehaviour
     public float touchSpeedReq;
 
     Vector2 setPos;
+    Vector2 refVector;
+    public float smoothAmount;
 
     public bool dragging;
     public bool blindOpen;
 
     public float yPosTop;
     public float yPosBot;
+    public float ypsps;
+
 
     void Start()
     {
@@ -36,28 +40,35 @@ public class BlindController : MonoBehaviour
 
     void LateUpdate()
     {
-        if(!dragging)
-            transform.localPosition = Vector2.Lerp(transform.localPosition, setPos, Mathf.Sqrt(Mathf.Abs(touchSpeed)) * Time.deltaTime);
+        if (!dragging)
+        {
+            transform.localPosition = Vector2.SmoothDamp(transform.localPosition, setPos, ref refVector, smoothAmount, Mathf.Infinity, Mathf.Abs(touchSpeed) / 100f * Time.fixedDeltaTime);
+        }
+        else
+        {
+            touchSpeed = Input.touches[0].deltaPosition.y / Input.touches[0].deltaTime;
+
+            transform.localPosition = new Vector2(transform.localPosition.x, transform.localPosition.y + (Input.touches[0].deltaPosition.y/1.525f));
+
+            if (transform.localPosition.y <= maxLocalY - 25f)
+            {
+                transform.localPosition = new Vector2(transform.localPosition.x, yPosBot - 25f);
+                blindOpen = false;
+            }
+
+            if (transform.localPosition.y >= minLocalY + 25f)
+            {
+                transform.localPosition = new Vector2(transform.localPosition.x, yPosTop + 25f);
+                blindOpen = true;
+            }
+
+            ypsps = Input.touches[0].deltaPosition.y;
+        }
     }
 
     public void OnDrag()
     {
         dragging = true;
-
-        transform.position = new Vector2(transform.position.x, Input.touches[0].position.y);
-        touchSpeed = Input.touches[0].deltaPosition.y / Input.touches[0].deltaTime;
-
-        if (transform.localPosition.y <= maxLocalY)
-        {
-            transform.localPosition = new Vector2(transform.localPosition.x, yPosBot);
-            blindOpen = false;
-        }
-
-        if (transform.localPosition.y >= minLocalY)
-        {
-            transform.localPosition = new Vector2(transform.localPosition.x, yPosTop);
-            blindOpen = true;
-        }
     }
 
     public void OnRelease()

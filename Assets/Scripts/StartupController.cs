@@ -17,6 +17,9 @@ public class StartupController : MonoBehaviour
 
     public float[] sets;
 
+    public ProductivityCircleController pCC;
+    bool isZeroSet = false;
+
 
     void Awake()
     {
@@ -44,6 +47,12 @@ public class StartupController : MonoBehaviour
 
                 top.transform.localPosition = Vector2.Lerp(top.transform.localPosition, new Vector2(top.transform.localPosition.x, 0f), Time.deltaTime * alignSpeed);
                 bot.transform.localPosition = Vector2.Lerp(bot.transform.localPosition, new Vector2(bot.transform.localPosition.x, 0f), Time.deltaTime * alignSpeed);
+
+                if (!isZeroSet)
+                {
+                    pCC.ZeroSet();
+                    isZeroSet = true;
+                }
 
                 if (bg.raycastTarget)
                     bg.raycastTarget = false;

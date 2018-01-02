@@ -11,6 +11,7 @@ public class ProductivityCircleController : MonoBehaviour
     TaskManager taskManager;
 
     Image blind;
+    public Image blindBG;
     public Image proCircle;
     public Image proCircleEx;
     public Text proText;
@@ -26,6 +27,8 @@ public class ProductivityCircleController : MonoBehaviour
 
     float realUseValue;
     float changedAmount;
+
+    float tempUseValue;
 
     public Color priorityRed;
     public Color priorityGrey;
@@ -79,15 +82,30 @@ public class ProductivityCircleController : MonoBehaviour
             priorityIndicatorOut = true;
     }
 
+    public void ZeroSet()
+    {
+        proCircle.fillAmount = 0;
+        proCircleEx.fillAmount = 0;
+        blind.color = grey;
+        blindBG.color = blind.color;
+        tempUseValue = 0f;
+    }
+
     void Update()
     {
         priorityCount = taskManager.priorityCount;
 
-        proCircle.fillAmount = Mathf.Lerp(proCircle.fillAmount, realUseValue / 100f, 4f * Time.deltaTime);
-        proCircleEx.fillAmount = Mathf.Lerp(proCircleEx.fillAmount, (realUseValue / 100f) - 1f, 4f * Time.deltaTime);
+        proCircle.fillAmount = Mathf.Lerp(proCircle.fillAmount, realUseValue / 100f, 1.5f * Time.deltaTime);
+        proCircleEx.fillAmount = Mathf.Lerp(proCircleEx.fillAmount, (realUseValue / 100f) - 1f, 1.5f * Time.deltaTime);
 
-        blind.color = Color.Lerp(blind.color, Color.Lerp(grey, green, realUseValue / 100f), 4f * Time.deltaTime);
+        blind.color = Color.Lerp(blind.color, Color.Lerp(grey, green, realUseValue / 100f), 1.5f * Time.deltaTime);
+        blindBG.color = blind.color;
 
+        tempUseValue = Mathf.Lerp(tempUseValue, realUseValue, 1.5f * Time.deltaTime);
+        
+        proText.text = Mathf.CeilToInt(tempUseValue).ToString() + "%";
+
+        //Priority Indicator Stuff
         if (priorityIndicatorOut)
             setXIndicator = xOutIndicator;
         else

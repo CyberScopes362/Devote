@@ -205,7 +205,7 @@ public class TaskManager : MonoBehaviour
     {
         DateTime todaysDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 
-        //This is actually so awesome: using a reverse for loop so you can delete while iterating without interfering the process if items are removed.
+        //Using a reverse for loop so you can delete while iterating without interfering the process if items are removed.
         for (int i = homeworkTasks.Count - 1; i >= 0; i--)
         {
             //If task is overdue and complete
@@ -704,6 +704,8 @@ public class TaskManager : MonoBehaviour
     {
         public string subjectName;
         public Color colorCode;
+
+        public string[] chapters;
     }
 
     [System.Serializable]
