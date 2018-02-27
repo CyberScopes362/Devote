@@ -3,7 +3,8 @@ guid: 368b5c7fe50049e469eaac6d5ec27a2f
 timeCreated: 1447459320
 licenseType: Store
 PluginImporter:
-  serializedVersion: 1
+  externalObjects: {}
+  serializedVersion: 2
   iconMap: {}
   executionOrder:
     uCPf.ColorInputField: 400
@@ -11,14 +12,25 @@ PluginImporter:
     uCPf.GradationRect: 200
     uCPf.GradationUI: 300
   isPreloaded: 0
+  isOverridable: 0
   platformData:
-    Any:
+  - first:
+      Any: 
+    second:
       enabled: 1
       settings: {}
-    Editor:
+  - first:
+      Editor: Editor
+    second:
       enabled: 0
       settings:
         DefaultValueInitialized: true
+  - first:
+      Windows Store Apps: WindowsStoreApps
+    second:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
   userData: 
   assetBundleName: 
   assetBundleVariant: 
