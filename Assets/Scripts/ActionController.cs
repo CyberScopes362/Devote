@@ -114,13 +114,13 @@ public class ActionController : MonoBehaviour
         {
             if(eachSubject.subjectName == addSubjectInput.text)
             {
-                Error("Subject Already Exists;\nPlease choose a new name for this subject.");
+                Error("Subject already exists;\nPlease choose a new name for this subject.");
                 break;
             }
         }
 
         if(addSubjectInput.text == "")
-            Error("No Subject Title Given;\nPlease give this subject a title.");
+            Error("Please give this subject a title.");
 
         if (!error)
         {
@@ -151,7 +151,7 @@ public class ActionController : MonoBehaviour
                 {
                     if (eachTask.subject == eachSubject.subjectName)
                     {
-                        Error("Cannot Delete a Subject while some Tasks still\nuse them! Please Delete the Tasks first.");
+                        Error("Cannot delete a subject while tasks \nuse them.");
                         break;
                     }
                 }
@@ -160,7 +160,7 @@ public class ActionController : MonoBehaviour
                 {
                     if (eachTask.subject == eachSubject.subjectName)
                     {
-                        Error("Cannot Delete a Subject while some Tasks still\nuse them! Please Delete the Tasks first.");
+                        Error("Cannot delete a subject while tasks \nuse them.");
                         break;
                     }
                 }
@@ -169,7 +169,7 @@ public class ActionController : MonoBehaviour
                 {
                     if (eachTask.subject == eachSubject.subjectName)
                     {
-                        Error("Cannot Delete a Subject while some Tasks still\nuse them! Please Delete the Tasks first.");
+                        Error("Cannot delete a subject while tasks \nuse them.");
                         break;
                     }
                 }
@@ -225,10 +225,10 @@ public class ActionController : MonoBehaviour
         }
 
         if(chosenSubj.subjectName == "" || chosenSubj.subjectName == null)
-            Error("No Subject Chosen;\nAdd Subjects first before creating tasks.");
+            Error("Add subjects first before creating tasks.");
 
         if (addHomeworkName.text == "")
-            Error("No Heading Provided;\nPlease give this task a heading.");
+            Error("Please give this task a heading.");
 
 
         if(!error)
@@ -252,7 +252,7 @@ public class ActionController : MonoBehaviour
             if (eachHomework.ID == taskID)
             {
                 taskManager.homeworkTasks.Remove(eachHomework);
-                toastIndicator.ActivateToast("Deleted Homework Task:\n" + eachHomework.heading, grey);
+                toastIndicator.ActivateToast("Deleted homework task:\n" + eachHomework.heading, grey);
                 //AndroidNativePopups.OpenToast("Deleted Homework Task: " + eachHomework.heading, AndroidNativePopups.ToastDuration.Long);
                 break;
             }
@@ -313,10 +313,10 @@ public class ActionController : MonoBehaviour
         }
 
         if (chosenSubj.subjectName == "" || chosenSubj.subjectName == null)
-            Error("No Subject Chosen;\nAdd Subjects first before creating tasks.");
+            Error("Add subjects first before creating tasks.");
 
         if (editHomeworkName.text == "")
-            Error("No Heading Provided;\nPlease give this task a heading.");
+            Error("Please give this task a heading.");
 
         if(!error)
         {
@@ -327,7 +327,7 @@ public class ActionController : MonoBehaviour
                     //Do some shit to find real index in homework list of item
                     taskManager.EditHomework(editHomeworkName.text, editHomeworkDesc.text, chosenSubj, editHomeworkSubDropMenu.setDate, i);
                     taskManager.HideAllPages();
-                    toastIndicator.ActivateToast("Edited Homework Task:\n" + editHomeworkName.text, grey);
+                    toastIndicator.ActivateToast("Edited homework task:\n" + editHomeworkName.text, grey);
                     break;
                 }
             }
@@ -355,10 +355,10 @@ public class ActionController : MonoBehaviour
         }
 
         if (chosenSubj.subjectName == "" || chosenSubj.subjectName == null)
-            Error("No Subject Chosen;\nAdd Subjects first before creating tasks.");
+            Error("Add subjects first before creating tasks.");
 
         if (addAssignmentName.text == "")
-            Error("No Heading Provided;\nPlease give this task a heading.");
+            Error("Please give this task a heading.");
 
 
         if (!error)
@@ -371,7 +371,7 @@ public class ActionController : MonoBehaviour
 
             taskManager.AddAssignment(addAssignmentName.text, addAssignmentDesc.text, chosenSubj, addAssignmentDate, partsConvert);
             taskManager.HideAllPages();
-            toastIndicator.ActivateToast("Added Assignment Task:\n" + addAssignmentName.text, grey);
+            toastIndicator.ActivateToast("Added assignment task:\n" + addAssignmentName.text, grey);
             //AndroidNativePopups.OpenToast("Added Assignment Task: " + addHomeworkName.text, AndroidNativePopups.ToastDuration.Long);
         }
 
@@ -388,7 +388,7 @@ public class ActionController : MonoBehaviour
             if (eachAssignment.ID == taskID)
             {
                 taskManager.assignmentTasks.Remove(eachAssignment);
-                toastIndicator.ActivateToast("Deleted Assignment Task:\n" + eachAssignment.heading, grey);
+                toastIndicator.ActivateToast("Deleted assignment task:\n" + eachAssignment.heading, grey);
                 //AndroidNativePopups.OpenToast("Deleted Assignment Task: " + eachAssignment.heading, AndroidNativePopups.ToastDuration.Long);
                 break;
             }
@@ -449,10 +449,10 @@ public class ActionController : MonoBehaviour
         }
 
         if (chosenSubj.subjectName == "" || chosenSubj.subjectName == null)
-            Error("No Subject Chosen;\nAdd Subjects first before creating tasks.");
+            Error("Add subjects first before creating tasks.");
 
         if (editAssignmentName.text == "")
-            Error("No Heading Provided;\nPlease give this assignment a heading.");
+            Error("Please give this assignment a heading.");
 
         if (!error)
         {
@@ -463,7 +463,7 @@ public class ActionController : MonoBehaviour
                     //Do some shit to find real index in homework list of item
                     taskManager.EditAssignment(editAssignmentName.text, editAssignmentDesc.text, chosenSubj, editAssignmentSubDropMenu.setDate, i);
                     taskManager.HideAllPages();
-                    toastIndicator.ActivateToast("Edited Assignment Task:\n" + editAssignmentName.text, grey);
+                    toastIndicator.ActivateToast("Edited assignment task:\n" + editAssignmentName.text, grey);
                     break;
                 }
             }
@@ -489,7 +489,7 @@ public class ActionController : MonoBehaviour
         }
 
         if (chosenSubj.subjectName == "" || chosenSubj.subjectName == null)
-            Error("No Subject Chosen;\nAdd Subjects first before creating tasks.");
+            Error("Add subjects first before assigning tasks.");
 
         // > Description should be optional
      //   if (addRevisionText.text == "")
@@ -523,7 +523,7 @@ public class ActionController : MonoBehaviour
 
             taskManager.AddRevision(mainTextString, chosenSubj);
             taskManager.HideAllPages();
-            toastIndicator.ActivateToast("Added Study Task for " + chosenSubj.subjectName, grey);
+            toastIndicator.ActivateToast("Added study task for " + chosenSubj.subjectName, grey);
             //AndroidNativePopups.OpenToast("Added Study Task for" + chosenSubj.subjectName, AndroidNativePopups.ToastDuration.Long);
         }
 
@@ -540,9 +540,9 @@ public class ActionController : MonoBehaviour
                 string toastText;
 
                 if (type == 1)
-                    toastText = "Study Task Completed";
+                    toastText = "Study task completed";
                 else
-                    toastText = "Study Task Dismissed";
+                    toastText = "Study task dismissed";
 
                 taskManager.revisionTasks.Remove(eachRevision);
                 toastIndicator.ActivateToast(toastText, grey);
@@ -570,22 +570,22 @@ public class ActionController : MonoBehaviour
         }
 
         if (chosenSubj.subjectName == "" || chosenSubj.subjectName == null)
-            Error("No Subject Chosen;\nAdd Subjects first before adding marks.");
+            Error("Add subjects first before adding marks.");
 
         if (addMarksTitle.text == "")
-            Error("No Heading Provided;\nPlease give this assessment mark a title.");
+            Error("Please give this mark a title.");
 
         if(addMarksMark.text == "")
-            Error("No Mark Given;\nPlease add a mark for this assessment.");
+            Error("Please add a mark for this assessment.");
 
         if (addMarksValue.text == "")
-            Error("No Value Given;\nPlease add a value for this assessment.");
+            Error("Please add a value for this assessment.");
 
         if (!error)
         {
             marksManager.AddMark(addMarksTitle.text, addMarksChosenSubj.text, Convert.ToInt32(addMarksMark.text), Convert.ToInt32(addMarksValue.text));
             taskManager.HideAllPages();
-            toastIndicator.ActivateToast("Added Mark for " + addMarksChosenSubj.text, grey);
+            toastIndicator.ActivateToast("Added mark for " + addMarksChosenSubj.text, grey);
         }
 
         if (!error)
@@ -599,7 +599,7 @@ public class ActionController : MonoBehaviour
             if(eachMark.ID == markID)
             {
                 marksManager.marks.Remove(eachMark);
-                toastIndicator.ActivateToast("Successfully Deleted Mark for " + eachMark.subjectName, grey);
+                toastIndicator.ActivateToast("Deleted mark for " + eachMark.subjectName, grey);
                 break;
             }
         }

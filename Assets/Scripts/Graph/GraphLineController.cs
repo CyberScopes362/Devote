@@ -82,11 +82,8 @@ public class GraphLineController : MonoBehaviour
         }
 
         //Create Average mark line
-        foreach(int mark in marks)
-            avMark += mark;
-
-        if(marks.Length != 0)
-            avMark /= marksAmount;
+        //-> Update: Now called from other file
+        avMark = GetComponentInParent<MarkScript>().avMarks;
 
         var insAvLine = Instantiate(faintLinePrefab) as GameObject;
         insAvLine.GetComponent<Image>().color = avLineColor;

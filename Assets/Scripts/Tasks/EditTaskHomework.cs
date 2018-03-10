@@ -51,7 +51,7 @@ public class EditTaskHomework : MonoBehaviour
         int completedCount = 0;
 
         //Set Order of homeworkTasks based on date.
-        //Idk how lambda expressions work but theyre damn awesome.
+        //Idk how lambda expressions work but theyre awesome
 
         homeworkTasks = homeworkTasks.OrderBy(x => x.subject).ToList();
         homeworkTasks = homeworkTasks.OrderBy(x => x.dateSet).ToList();

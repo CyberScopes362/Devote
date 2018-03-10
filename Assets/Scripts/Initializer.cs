@@ -8,6 +8,7 @@ public class Initializer : MonoBehaviour
     public GameObject mainCanvas;
     public TaskManager taskManager;
     public MarksManager marksManager;
+    public ViewMarksManager viewMarksManager;
     public ActionController actionController;
     public ToastIndicator toastIndicator;
     public HorizontalMovement horizontalMovement;

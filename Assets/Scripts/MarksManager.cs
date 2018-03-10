@@ -50,6 +50,7 @@ public class MarksManager : MonoBehaviour
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/m.dat", FileMode.Open);
+
             AllMarksData allMarksData = (AllMarksData)bf.Deserialize(file);
           
             marks = allMarksData.sMarks;
@@ -63,7 +64,6 @@ public class MarksManager : MonoBehaviour
     public class AllMarksData
     {
         public List<Marks> sMarks = new List<Marks>();
-
         public int sMarkIDCount;
     }
 

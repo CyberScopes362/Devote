@@ -297,12 +297,16 @@
     <Compile Include="Assets\Scripts\AssignmentSliderSender.cs" />
     <Compile Include="Assets\Scripts\BlindController.cs" />
     <Compile Include="Assets\Scripts\Graph\GraphLineController.cs" />
+    <Compile Include="Assets\Scripts\Graph\ViewGraphLineController.cs" />
     <Compile Include="Assets\Scripts\HorizontalMovement.cs" />
+    <Compile Include="Assets\Scripts\HorizontalScrollSnapper.cs" />
     <Compile Include="Assets\Scripts\Initializer.cs" />
     <Compile Include="Assets\Scripts\Marks\AvMarkScript.cs" />
     <Compile Include="Assets\Scripts\Marks\EditMarks.cs" />
     <Compile Include="Assets\Scripts\Marks\MarkScript.cs" />
     <Compile Include="Assets\Scripts\Marks\SeparateMarksHolder.cs" />
+    <Compile Include="Assets\Scripts\Marks\SubjectItemHolder.cs" />
+    <Compile Include="Assets\Scripts\Marks\ViewMarksManager.cs" />
     <Compile Include="Assets\Scripts\MarksInputLimiter.cs" />
     <Compile Include="Assets\Scripts\MarksManager.cs" />
     <Compile Include="Assets\Scripts\ProductivityCircleController.cs" />

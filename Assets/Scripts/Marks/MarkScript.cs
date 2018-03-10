@@ -11,4 +11,5 @@ public class MarkScript : MonoBehaviour
     public UILineRenderer lineGraph;
     public GraphLineController graphLineController;
     public GameObject subjectMarksParent;
+    public int avMarks;
 }

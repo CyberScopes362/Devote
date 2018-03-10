@@ -59,7 +59,7 @@ public class EditMarks : MonoBehaviour
         else
         {
             var insAv = Instantiate(avPrefab);
-            insAv.transform.SetParent(this.transform, false);
+            insAv.transform.SetParent(transform, false);
             insAv.transform.SetAsFirstSibling();
             totalYPos += 100f;
 
@@ -111,6 +111,7 @@ public class EditMarks : MonoBehaviour
                 allSubjCountForAv += 1;
                 allAvMarks += avMarks;
 
+                markScript.avMarks = Mathf.RoundToInt(avMarks);
                 markScript.avMarkTextNo.text = "~ " + Mathf.RoundToInt(avMarks).ToString() + "%";
                 markScript.avMarkText.color = markScript.graphLineController.avLineColor;
                 markScript.avMarkTextNo.color = markScript.graphLineController.avLineColor;
