@@ -92,7 +92,7 @@ public class ViewMarksManager : MonoBehaviour
         else
         {
             print("No grades");
-            Instantiate(noCollection, transform);
+            Instantiate(noCollection, transform.parent);
         }
     }
 

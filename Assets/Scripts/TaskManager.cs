@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
 using System.Collections;
+using AndNotify;
 
 public class TaskManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class TaskManager : MonoBehaviour
 
     public GameObject popupParent;
     public GameObject pageParent;
+    public GameObject notifObj;
 
     //Pages + Popups
     public GameObject[] allPages;
@@ -71,6 +73,7 @@ public class TaskManager : MonoBehaviour
 
     //For settings - use "stg" as begginings
     public bool stgAutoClear;
+    public bool stgNotifsOpt;
 
     //Priority count
     public int priorityCount;
@@ -133,6 +136,8 @@ public class TaskManager : MonoBehaviour
         UpdateProductivity();
         UpdatePriorityCount();
         SaveAllContent();
+
+        SetNotifications();
     }
 
     void Update()
@@ -177,6 +182,100 @@ public class TaskManager : MonoBehaviour
     // Start Custom Functions
     //
     //
+
+
+
+    public void SetNotifications()
+    {
+        int ids = 0;
+        DateTime todaysDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+        DateTime tomorrowsDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day).AddDays(1);
+        //DateTime timeGap = DateTime.Today.AddHours(notifHours);
+
+
+        foreach (Homework x in homeworkTasks)
+        {
+            if(!x.isComplete)
+            {
+                if (x.dateSet == todaysDate)
+                {
+                    GameObject insNotif = Instantiate(notifObj);
+                    insNotif.GetComponent<NotificationSetup>().Title = "Homework Reminder";
+                    insNotif.GetComponent<NotificationSetup>().Content = "Incomplete " + x.subject + " homework " + x.heading + "due today.";
+                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    ids++;
+                }
+
+                if (x.dateSet == tomorrowsDate)
+                {
+                    GameObject insNotif = Instantiate(notifObj);
+                    insNotif.GetComponent<NotificationSetup>().Title = "Homework Reminder";
+                    insNotif.GetComponent<NotificationSetup>().Content = "Incomplete " + x.subject + " homework " + x.heading + "due tomorrow.";
+                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    ids++;
+                }
+
+                if (x.dateSet == tomorrowsDate.AddDays(1))
+                {
+                    GameObject insNotif = Instantiate(notifObj);
+                    insNotif.GetComponent<NotificationSetup>().Title = "Homework Reminder";
+                    insNotif.GetComponent<NotificationSetup>().Content = "Incomplete " + x.subject + " homework " + x.heading + "due in two days.";
+                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    ids++;
+                }
+            }
+        }
+
+        foreach (Assignment x in assignmentTasks)
+        {
+            if (x.completion < 100)
+            {
+                if (x.dateSet == todaysDate)
+                {
+                    GameObject insNotif = Instantiate(notifObj);
+                    insNotif.GetComponent<NotificationSetup>().Title = "Assignment Reminder";
+                    insNotif.GetComponent<NotificationSetup>().Content = x.completion + "% completed " + x.subject + " assignment " + x.heading + "due today.";
+                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    ids++;
+                }
+
+                if (x.dateSet == tomorrowsDate)
+                {
+                    GameObject insNotif = Instantiate(notifObj);
+                    insNotif.GetComponent<NotificationSetup>().Title = "Assignment Reminder";
+                    insNotif.GetComponent<NotificationSetup>().Content = x.completion + "% completed " + x.subject + " assignment " + x.heading + "due tomorrow.";
+                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    ids++;
+                }
+
+                if (x.dateSet == tomorrowsDate.AddDays(1))
+                {
+                    GameObject insNotif = Instantiate(notifObj);
+                    insNotif.GetComponent<NotificationSetup>().Title = "Assignment Reminder";
+                    insNotif.GetComponent<NotificationSetup>().Content = x.completion + "% completed " + x.subject + " homework " + x.heading + "due in two days.";
+                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    ids++;
+                }
+
+                if (x.dateSet == tomorrowsDate.AddDays(2))
+                {
+                    GameObject insNotif = Instantiate(notifObj);
+                    insNotif.GetComponent<NotificationSetup>().Title = "Assignment Reminder";
+                    insNotif.GetComponent<NotificationSetup>().Content = x.completion + "% completed " + x.subject + " homework " + x.heading + "due in three days.";
+                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    ids++;
+                }
+            }
+        }
+
+
+
+        //
+        //  Problem is notifs will fail if user does not open app every day, so instead give an infinite reminder for every day for a week to get the user to check up manually to startup the notif system.
+        //
+        
+    }
+
 
     public void UpdatePriorityCount()
     {
@@ -432,6 +531,7 @@ public class TaskManager : MonoBehaviour
 
         //Save Settings
         allData.sStgAutoClear = stgAutoClear;
+        allData.sStgNotifsOpt = stgNotifsOpt;
 
         DateTime todaysDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         allData.sTomorrowsDateConstant = todaysDate.AddDays(1);
@@ -462,6 +562,7 @@ public class TaskManager : MonoBehaviour
 
             //Load Settings
             stgAutoClear = allData.sStgAutoClear;
+            stgNotifsOpt = allData.sStgNotifsOpt;
 
             totalProLevel = allData.sTotalProLevel;
             totalProChangeAmount = allData.sTotalProChangeAmount;
@@ -688,6 +789,7 @@ public class TaskManager : MonoBehaviour
         public List<int> sQuotesAlreadyUsed = new List<int>();
 
         public bool sStgAutoClear;
+        public bool sStgNotifsOpt;
     }
 
     //Because colors cannot be serialized and saved, the color must be split into an array of ints instead, so this temporary list is used instead.

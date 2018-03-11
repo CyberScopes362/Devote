@@ -8,6 +8,7 @@ public class SettingsController : MonoBehaviour
     ViewMarksManager viewMarksManager;
     TaskManager taskManager;
     ActionController actionController;
+    public Toggle notifToggle;
     public Toggle onClearToggle;
     public Text onClearSubText;
     public InputField inputTitle;
@@ -75,6 +76,16 @@ public class SettingsController : MonoBehaviour
         {
             resetPopup.SetActive(false);
         }
+    }
+
+    public void OnClick_Notifications()
+    {
+        if (notifToggle.isOn)
+            taskManager.stgNotifsOpt = true;
+        else
+            taskManager.stgNotifsOpt = false;
+
+        actionController.GeneralFunctions();
     }
 
     public void OnClickPlayStore()

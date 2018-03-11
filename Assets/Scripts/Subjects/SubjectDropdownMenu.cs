@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections;
-using TheNextFlow.UnityPlugins;
+using FantomLib;
+using System.Globalization;
 
 
 public class SubjectDropdownMenu : MonoBehaviour
@@ -15,10 +16,11 @@ public class SubjectDropdownMenu : MonoBehaviour
     public Text dateTextExtended;
 
     public DateTime setDate;
+    public string defaultDate = "";
 
-    int cYear;
-    int cMonth;
-    int cDay;
+    //int cYear;
+    //int cMonth;
+    //int cDay;
     string dateFormed;
 
     void Start()
@@ -63,22 +65,38 @@ public class SubjectDropdownMenu : MonoBehaviour
 
     public void OpenDatePicker()
     {
-        //
-        //Not sure why I need to -1 from the picker month, and +1 on the chosen option.... weird DateTime interactions
-        //
 
-        AndroidNativePopups.OpenDatePickerDialog(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day, 
-        (int year, int month, int day) => 
-        {
-            cYear = year;
-            cMonth = month + 1;
-            cDay = day;
+        AndroidPlugin.ShowDatePickerDialog(DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year, "dd/MM/yyyy", gameObject.name, "SetDate", "android:Theme.DeviceDefault.Light.Dialog.Alert");
 
-            dateFormed = cDay.ToString() + "/" + cMonth.ToString() + "/" + cYear.ToString();
-            dateText.text = dateFormed;
+        /*  AndroidNativePopups.OpenDatePickerDialog(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day, 
+          (int year, int month, int day) => 
+          {
+              cYear = year;
+              cMonth = month + 1;
+              cDay = day;
 
-            setDate = new DateTime(cYear, cMonth, cDay);
-            dateTextExtended.text = setDate.ToString("dddd") + ", " + cDay + " " + setDate.ToString("MMMM");
-        });
+              dateFormed = cDay.ToString() + "/" + cMonth.ToString() + "/" + cYear.ToString();
+              dateText.text = dateFormed;
+
+              setDate = new DateTime(cYear, cMonth, cDay);
+              dateTextExtended.text = setDate.ToString("dddd") + ", " + cDay + " " + setDate.ToString("MMMM");
+          });
+          */
+    }
+
+    public void OpenDatePicker(string defaultDate)
+    {
+        this.defaultDate = defaultDate;
+        OpenDatePicker();
+    }
+
+    public void SetDate(string result)
+    {
+        dateFormed = result;
+        dateText.text = dateFormed;
+        //dateTextExtended.text = DateTime.ParseExact(result, "dd/MM/yyyy", CultureInfo.InstalledUICulture).ToString();
+
+        setDate = DateTime.ParseExact(result, "dd/MM/yyyy", CultureInfo.InstalledUICulture);
+        dateTextExtended.text = setDate.ToString("dddd") + ", " + setDate.Day + " " + setDate.ToString("MMMM");
     }
 }

@@ -190,9 +190,9 @@ public class AssignmentTask : MonoBehaviour
                     eachAssignment.isPrioritised = isPrioritised;
 
                     if (isPrioritised)
-                        actionController.Toast("Prioritised Assignment Task:\n" + eachAssignment.heading);
+                        actionController.Toast("Prioritised assignment task:\n" + eachAssignment.heading);
                     else
-                        actionController.Toast("Unprioritised Assigment Task:\n" + eachAssignment.heading);
+                        actionController.Toast("Unprioritised assigment task:\n" + eachAssignment.heading);
                     break;
                 }
             }
@@ -203,7 +203,7 @@ public class AssignmentTask : MonoBehaviour
             //Maybe add toast (?) + Needs to initiate update for the priority counter
         }
         else
-            actionController.Error("Cannot Prioritise Completed Tasks.");
+            actionController.Error("Cannot prioritise completed tasks.");
     }
 
     public void Unprioritise()
