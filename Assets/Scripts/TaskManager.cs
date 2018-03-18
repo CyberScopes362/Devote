@@ -191,6 +191,7 @@ public class TaskManager : MonoBehaviour
         DateTime todaysDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         DateTime tomorrowsDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day).AddDays(1);
         //DateTime timeGap = DateTime.Today.AddHours(notifHours);
+        TimeSpan dueTime = DateTime.Today.AddHours(22) - DateTime.Now;
 
 
         foreach (Homework x in homeworkTasks)
@@ -199,28 +200,46 @@ public class TaskManager : MonoBehaviour
             {
                 if (x.dateSet == todaysDate)
                 {
+                    print("correct date");
                     GameObject insNotif = Instantiate(notifObj);
-                    insNotif.GetComponent<NotificationSetup>().Title = "Homework Reminder";
-                    insNotif.GetComponent<NotificationSetup>().Content = "Incomplete " + x.subject + " homework " + x.heading + "due today.";
-                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
+                    notifHolder.Title = "Homework Reminder";
+                    notifHolder.Content = "Incomplete " + x.subject + " homework " + x.heading + "due today.";
+                    notifHolder.notificationID = ids;
+
+                    notifHolder.Hours = dueTime.Hours;
+                    notifHolder.Minutes = dueTime.Minutes;
+                    notifHolder.Seconds = dueTime.Seconds;
+
                     ids++;
                 }
 
                 if (x.dateSet == tomorrowsDate)
                 {
                     GameObject insNotif = Instantiate(notifObj);
-                    insNotif.GetComponent<NotificationSetup>().Title = "Homework Reminder";
-                    insNotif.GetComponent<NotificationSetup>().Content = "Incomplete " + x.subject + " homework " + x.heading + "due tomorrow.";
-                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
+
+                    notifHolder.Title = "Homework Reminder";
+                    notifHolder.Content = "Incomplete " + x.subject + " homework " + x.heading + "due tomorrow.";
+                    notifHolder.notificationID = ids;
+
+                    notifHolder.Hours = dueTime.Hours;
+                    notifHolder.Minutes = dueTime.Minutes;
+                    notifHolder.Seconds = dueTime.Seconds;
                     ids++;
                 }
 
                 if (x.dateSet == tomorrowsDate.AddDays(1))
                 {
                     GameObject insNotif = Instantiate(notifObj);
-                    insNotif.GetComponent<NotificationSetup>().Title = "Homework Reminder";
-                    insNotif.GetComponent<NotificationSetup>().Content = "Incomplete " + x.subject + " homework " + x.heading + "due in two days.";
-                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
+                    notifHolder.Title = "Homework Reminder";
+                    notifHolder.Content = "Incomplete " + x.subject + " homework " + x.heading + "due in two days.";
+                    notifHolder.notificationID = ids;
+
+                    notifHolder.Hours = dueTime.Hours;
+                    notifHolder.Minutes = dueTime.Minutes;
+                    notifHolder.Seconds = dueTime.Seconds;
                     ids++;
                 }
             }
@@ -233,36 +252,56 @@ public class TaskManager : MonoBehaviour
                 if (x.dateSet == todaysDate)
                 {
                     GameObject insNotif = Instantiate(notifObj);
-                    insNotif.GetComponent<NotificationSetup>().Title = "Assignment Reminder";
-                    insNotif.GetComponent<NotificationSetup>().Content = x.completion + "% completed " + x.subject + " assignment " + x.heading + "due today.";
-                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
+                    notifHolder.Title = "Assignment Reminder";
+                    notifHolder.Content = x.completion + "% completed " + x.subject + " assignment " + x.heading + "due today.";
+                    notifHolder.notificationID = ids;
+
+                    notifHolder.Hours = dueTime.Hours;
+                    notifHolder.Minutes = dueTime.Minutes;
+                    notifHolder.Seconds = dueTime.Seconds;
                     ids++;
                 }
 
                 if (x.dateSet == tomorrowsDate)
                 {
                     GameObject insNotif = Instantiate(notifObj);
-                    insNotif.GetComponent<NotificationSetup>().Title = "Assignment Reminder";
-                    insNotif.GetComponent<NotificationSetup>().Content = x.completion + "% completed " + x.subject + " assignment " + x.heading + "due tomorrow.";
-                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
+                    notifHolder.Title = "Assignment Reminder";
+                    notifHolder.Content = x.completion + "% completed " + x.subject + " assignment " + x.heading + "due tomorrow.";
+                    notifHolder.notificationID = ids;
+
+                    notifHolder.Hours = dueTime.Hours;
+                    notifHolder.Minutes = dueTime.Minutes;
+                    notifHolder.Seconds = dueTime.Seconds;
                     ids++;
                 }
 
                 if (x.dateSet == tomorrowsDate.AddDays(1))
                 {
                     GameObject insNotif = Instantiate(notifObj);
-                    insNotif.GetComponent<NotificationSetup>().Title = "Assignment Reminder";
-                    insNotif.GetComponent<NotificationSetup>().Content = x.completion + "% completed " + x.subject + " homework " + x.heading + "due in two days.";
-                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
+                    notifHolder.Title = "Assignment Reminder";
+                    notifHolder.Content = x.completion + "% completed " + x.subject + " homework " + x.heading + "due in two days.";
+                    notifHolder.notificationID = ids;
+
+                    notifHolder.Hours = dueTime.Hours;
+                    notifHolder.Minutes = dueTime.Minutes;
+                    notifHolder.Seconds = dueTime.Seconds;
                     ids++;
                 }
 
                 if (x.dateSet == tomorrowsDate.AddDays(2))
                 {
                     GameObject insNotif = Instantiate(notifObj);
-                    insNotif.GetComponent<NotificationSetup>().Title = "Assignment Reminder";
-                    insNotif.GetComponent<NotificationSetup>().Content = x.completion + "% completed " + x.subject + " homework " + x.heading + "due in three days.";
-                    insNotif.GetComponent<NotificationSetup>().notificationID = ids;
+                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
+                    notifHolder.Title = "Assignment Reminder";
+                    notifHolder.Content = x.completion + "% completed " + x.subject + " homework " + x.heading + "due in three days.";
+                    notifHolder.notificationID = ids;
+
+                    notifHolder.Hours = dueTime.Hours;
+                    notifHolder.Minutes = dueTime.Minutes;
+                    notifHolder.Seconds = dueTime.Seconds;
                     ids++;
                 }
             }

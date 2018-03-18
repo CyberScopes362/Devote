@@ -281,11 +281,11 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="uCPf">
-      <HintPath>Assets\uGUIColorPicker-free\Plugins\uCPf.dll</HintPath>
-    </Reference>
     <Reference Include="AndNotify">
       <HintPath>Assets\Plugins\Android\AndNotify.dll</HintPath>
+    </Reference>
+    <Reference Include="uCPf">
+      <HintPath>Assets\uGUIColorPicker-free\Plugins\uCPf.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -506,11 +506,7 @@
     <None Include="Assets\FantomPlugin\fantomPlugin_ReadMe_en.txt" />
     <None Include="Assets\FantomPlugin\fantomPlugin_ReadMe_jp.txt" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
-    <None Include="Assets\Plugins\Android\UnityShowAndroidStatusBar\AndroidManifest.xml" />
-    <None Include="Assets\Plugins\Android\UnityShowAndroidStatusBar\res\values-v14\styles.xml" />
-    <None Include="Assets\Plugins\Android\UnityShowAndroidStatusBar\res\values-v19\styles.xml" />
-    <None Include="Assets\Plugins\Android\UnityShowAndroidStatusBar\res\values-v21\styles.xml" />
-    <None Include="Assets\Plugins\Android\UnityShowAndroidStatusBar\res\values\styles.xml" />
+    <None Include="Assets\Plugins\Android\oldAndroidManifest.xml" />
     <None Include="Assets\Plugins\_AndNotify\Readme-AndNotify.txt" />
     <None Include="Assets\Resources\quotes.txt" />
     <None Include="Assets\unity-ui-extensions\Scripts\Utilities\Serialization\Surrogates\SurrogatesReadMe.txt" />

@@ -19,7 +19,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 361ec5b05caa56d7b4e149d4dd50f3f6 Assembly-CSharp.dll:UnityEngine.UI.Extensions.RadialLayout
-15cc5688c1705f22154fc9e7ef8641a5 Assembly-CSharp.dll:.TaskManager
+4b77fabea55ac7dc6fa2cb45fdc30516 Assembly-CSharp.dll:.TaskManager
 31c7a8bd0e0165ef01430a3628064c5c Assembly-CSharp.dll:FantomLib.LongClickInput
 f31dcd9ffe04d4219c860cb0076d611f Assembly-CSharp.dll:FantomLib.AlphaNumericTextDialogController
 d5f1988b1440f161694fc97cbc90bee2 Assembly-CSharp.dll:FantomLib.PinchToDistance
@@ -177,7 +177,7 @@ ce336a1cfd1c0fa856271d2337205e6a Assembly-CSharp.dll:FantomLib.SwipeInput
 a49b9a426f3731f8644313bb963de4b5 Assembly-CSharp.dll:.ScrollRestrictor
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AssignmentPartsLimiter
 7c7cfb16b143305ac0ed5c366c1b8ccb Assembly-CSharp.dll:FantomLib.YesNoDialogController
-363e704356203a3e5ba300cc98d1af54 Assembly-CSharp.dll:.SettingsController
+8c9bcf3146284fc3492e27ed025170e0 Assembly-CSharp.dll:.SettingsController
 c17faa06017040be93694c561c10d931 Assembly-CSharp.dll:.HorizontalScrollSnapper
 161d81543a4f3cb98ac65429a6a32ff3 Assembly-CSharp.dll:UnityEngine.UI.Extensions.BoundTooltipItem
 41025111809cdafffa61c11f909ed68e Assembly-CSharp.dll:UnityEngine.UI.Extensions.UILineRenderer
@@ -246,6 +246,7 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 35a85271514203b44e5f0317c842c90b Assembly-CSharp.dll:UnityEngine.UI.Extensions.ScrollRectEx
 a3ddfefc4e0683f87c9499fe9438f259 Assembly-CSharp.dll:FantomLib.SavedCheckedSwitcher
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
+0b799904b4df172dc1b7560fbff4b15f AndNotify.dll:AndNotify.NotificationSetup
 f0aa159f59bb027fe12f3190d75d84f4 Assembly-CSharp.dll:FantomLib.HardVolumeController
 a36d6541b3ca9c61d7938dcd4cc9cdf0 Assembly-CSharp.dll:UnityEngine.UI.Extensions.LetterSpacing
 cde49f8b65b330a3d5a092cd8f503d03 Assembly-CSharp.dll:UnityEngine.UI.Extensions.InputFieldEnterSubmit
@@ -262,6 +263,7 @@ b0c6d2a843b707983a659d0302bba6ba Assembly-CSharp.dll:UnityEngine.UI.Extensions.C
 4cbcae506ed2e4b803ac23674896027f Assembly-CSharp.dll:UnityEngine.UI.Extensions.AccordionElement
 7babcdb2b5d6068d61aac0fe7faaa235 Assembly-CSharp.dll:FantomLib.OKWithCheckBoxDialogController
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+31b49c1de5cde1f1ed9658217cdc35fa Assembly-CSharp-firstpass.dll:.Test
 597351f6f3fa28be343680798889e66a Assembly-CSharp.dll:FantomLib.SingleChoiceDialogController
 2b27d4fae9a711461eaed3e7cd8c539c Assembly-CSharp.dll:FantomLib.NotificationController
 8a9a7fc5bc42bf6ae2e2e83a39c4e30f Assembly-CSharp.dll:FantomLib.SliderDialogController
@@ -308,5 +310,3 @@ e3f81cd98f08c26dafbd1697d99a7ba8 Assembly-CSharp.dll:.ToastIndicator
 6af922e37375c58c609babcac3447d4c Assembly-CSharp.dll:.SubjectParent
 6c19fb1510ead5ca6d7c3a890062fddb Assembly-CSharp.dll:FantomLib.BluetoothSettingController
 2a928881e9be56883ee670d5b7a9ebf3 Assembly-CSharp.dll:.EditTaskRevision
-0b799904b4df172dc1b7560fbff4b15f AndNotify.dll:AndNotify.NotificationSetup
-31b49c1de5cde1f1ed9658217cdc35fa Assembly-CSharp-firstpass.dll:.Test

@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 711, y: 392}
-  m_MaxSize: {x: 18006, y: 14042}
+  m_MinSize: {x: 583, y: 342}
+  m_MaxSize: {x: 12008, y: 8042}
   vertical: 0
-  controlID: 120
+  controlID: 80
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 1336
     height: 947
-  m_MinSize: {x: 434, y: 392}
-  m_MaxSize: {x: 14004, y: 14042}
+  m_MinSize: {x: 306, y: 342}
+  m_MaxSize: {x: 8006, y: 8042}
   vertical: 1
-  controlID: 19
+  controlID: 36
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_MinSize: {x: 206, y: 121}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 20
+  controlID: 145
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -231,10 +231,10 @@ MonoBehaviour:
     y: 602
     width: 1336
     height: 345
-  m_MinSize: {x: 434, y: 271}
-  m_MaxSize: {x: 14004, y: 10021}
+  m_MinSize: {x: 306, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 66
+  controlID: 37
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -253,8 +253,8 @@ MonoBehaviour:
     y: 0
     width: 503
     height: 345
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -278,15 +278,15 @@ MonoBehaviour:
     y: 0
     width: 833
     height: 345
-  m_MinSize: {x: 234, y: 271}
-  m_MaxSize: {x: 10004, y: 10021}
-  m_ActualView: {fileID: 20}
+  m_MinSize: {x: 104, y: 121}
+  m_MaxSize: {x: 4004, y: 4021}
+  m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 20}
   - {fileID: 21}
   - {fileID: 22}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -450,7 +450,7 @@ MonoBehaviour:
       width: 673.7589
       height: 800
     m_MinimalGUI: 1
-  m_defaultScale: 0.4638672
+  m_defaultScale: 0.705
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 475, y: 581}
@@ -490,9 +490,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -480.00006, y: 262.14157, z: -5.4360003}
+    m_Target: {x: -533.7298, y: 240.15318, z: -3.6925821}
     speed: 2
-    m_Value: {x: -480.00006, y: 262.14157, z: -5.4360003}
+    m_Value: {x: -533.7298, y: 240.15318, z: -3.6925821}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -520,9 +520,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 3856.1533
+    m_Target: 3682.6265
     speed: 2
-    m_Value: 3856.1533
+    m_Value: 3682.6265
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -569,10 +569,10 @@ MonoBehaviour:
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
-    m_HBaseRangeMin: -427.5
-    m_HBaseRangeMax: 427.5
-    m_VBaseRangeMin: -267.1875
-    m_VBaseRangeMax: 267.1875
+    m_HBaseRangeMin: -640
+    m_HBaseRangeMax: 640
+    m_VBaseRangeMin: -400
+    m_VBaseRangeMax: 400
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -591,7 +591,7 @@ MonoBehaviour:
       y: 17
       width: 855
       height: 564
-    m_Scale: {x: 1, y: 1}
+    m_Scale: {x: 0.66796875, y: 0.66796875}
     m_Translation: {x: 427.5, y: 282}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -599,12 +599,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -427.5
-      y: -282
-      width: 855
-      height: 564
+      x: -640
+      y: -422.17545
+      width: 1280
+      height: 844.3509
     m_MinimalGUI: 1
-  m_defaultScale: 1
+  m_defaultScale: 0.66796875
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 855, y: 581}
@@ -639,10 +639,10 @@ MonoBehaviour:
     height: 324
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
-    scrollPos: {x: 0, y: 157}
-    m_SelectedIDs: 7a670600
-    m_LastClickedID: 419706
-    m_ExpandedIDs: 7a59faff1e5afaff165cfaffe4bdfaff86befaff7ec0faff4ae0faffd0e0faffcae2fafff8f7faff7ef8faff80fafaffbe48fbff0249fbff0449fbffe074fbffe274fbff22defbffda01fcff6e02fcff6c04fcff620cfcfff60cfcffee0efcff1c46fcfff046fcffec48fcff14dbfcffa8dbfcffa0ddfcffaef3fcff2cf4fcff28f6fcff9803fdff2e04fdff2606fdfffe7efdff9e7ffdff8e81fdffcc63ffff5064ffff4666ffffa469ffff286affff1e6cffff686fffffec6fffffe271ffff2c77ffffb077ffffa679ffff547dffffd87dffffce7ffffffa82ffff7c83ffff7285ffff3689ffffb689ffffac8bffff1698ffffdc98ffffda9afffff8bafffff4bbfffff4bdffff9efbffff000000009e2f000036050500de0505002a060500ac060500840705005c0805008016050008670500b0670500fc670500b0aa050058ab0500a4ab050060ee050008ef050054ef05000867060012670600ba67060006680600cc68060016690600226a0600
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 220a0200
+    m_LastClickedID: 133666
+    m_ExpandedIDs: ee9effff8a9fffff84a1ffff18a9ffffbaa9ffffbca9ffff46abffffe8abffffe6adffff08b3ffff9cb3ffff9cb5ffffa6bcffff2cbdffff26bfffff34c3ffffbac3ffffb4c5ffff8cd1ffff2ed2ffff2cd4ffff5ce1ffff4ae2ffff48e4ffff98fbffff00000000220a0200ca0a0200160b0200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -704,33 +704,33 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Plugins/_AndNotify
+    - Assets/Plugins/Android
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Plugins/_AndNotify
+  - Assets/Plugins/Android
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\CyberScopes\Desktop\Unity Projects\Devote
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 85}
-    m_SelectedIDs: 148f0300
-    m_LastClickedID: 233236
-    m_ExpandedIDs: 00000000622900009e290000b6290000c42a0000402b0000642b0000c62b00005c2c0000742c0000882c0000d62c0000022d00003a2d0000a2450000a4450000a6450000a8450000aa45000000ca9a3bffffff7f
+    m_SelectedIDs: f02c0000
+    m_LastClickedID: 11504
+    m_ExpandedIDs: 0000000064290000a0290000b8290000b22a00002e2b0000542b0000b62b00004a2c0000622c0000762c0000c62c0000f02c00002a2d00009c4500009e450000a0450000a2450000a445000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: UnityShowAndroidStatusBar
-      m_OriginalName: UnityShowAndroidStatusBar
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 1938
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_SearchString: 
@@ -744,7 +744,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 70050000
     m_LastClickedID: 1392
-    m_ExpandedIDs: 00000000622900009e290000b6290000ba2a0000c42a0000942b0000c62b00003c2c00005c2c0000742c0000882c0000ca2c0000d62c00001a2d00003a2d00006c2d0000a2450000a4450000a6450000a8450000aa450000
+    m_ExpandedIDs: 0000000064290000a0290000b8290000b22a00002e2b0000542b0000b62b00004a2c0000622c0000762c0000c62c0000f02c00002a2d00009c4500009e450000a0450000a2450000a4450000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -775,15 +775,15 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: f46700003e2f0100ea2b0000722a000014200000180700006a050000600500005e050000300700002e070000981d00003024000068050000980600002a0600000e0700000607000074050000800500008e070000a40600009a07000018060000120900001c0900003009000032090000861c0000c21c0000ce1c0000b81c0000c81c0000061e0000c41d0000aa2dfdff78200000b2200000821c0000881c00007c1c0000c61d0000161f00007e200000c220000040200000701c0000d81d000042200000c42000006887f2ffe620f1ff30ecf0ffec1d0000f21d0000f01d0000c48dfdffa21c0000f2200000a61c00006a95ffff64220000e6210000f02100005ca3ffffa42200000e220000ec2400009611ffff1e23000014230000222300001a230000182300001c240000ce410200902600001a250000bc2500001825000000000000122500002025000016250000742a0000a42b0000482c000096290000da8e0300
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: EditTaskHomework
-      m_OriginalName: EditTaskHomework
+      m_Name: AndroidManifest
+      m_OriginalName: AndroidManifest
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 2396
+      m_UserData: 11072
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
