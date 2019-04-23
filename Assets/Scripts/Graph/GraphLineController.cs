@@ -22,6 +22,7 @@ public class GraphLineController : MonoBehaviour
     int marksAmount;
     int avMark;
     public int[] marks;
+    public int[] marksValue;
 
 
     void Start()
@@ -66,6 +67,10 @@ public class GraphLineController : MonoBehaviour
 
             if(!float.IsNaN(xWidth / (marksAmount - 1) * i))
                 insX.transform.localPosition = new Vector2((xWidth / (marksAmount - 1) * i) - (xWidth / 2), insX.transform.localPosition.y);
+
+            //Set the text to faded red if the mark has no worth
+            if (marksValue[i] == 0)
+                insX.GetComponent<Text>().color = new Color32(196, 33, 33, 150);
 
             insX.isStatic = true;
             letterValue = (char)(((int)letterValue) + 1);

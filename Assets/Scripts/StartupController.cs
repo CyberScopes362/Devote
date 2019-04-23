@@ -26,8 +26,8 @@ public class StartupController : MonoBehaviour
         transform.localPosition = new Vector2(0f, 0f);
         bg = GetComponent<Image>();
 
-        top.transform.localPosition = new Vector2(top.transform.localPosition.x, topPos);
-        bot.transform.localPosition = new Vector2(bot.transform.localPosition.x, botPos);
+        top.transform.position = new Vector2(top.transform.position.x, topPos);
+        bot.transform.position = new Vector2(bot.transform.position.x, botPos);
     }
 
     void Update()
@@ -45,8 +45,8 @@ public class StartupController : MonoBehaviour
             {
                 bg.color = Color.Lerp(bg.color, Color.clear, Time.deltaTime * 5f);
 
-                top.transform.localPosition = Vector2.Lerp(top.transform.localPosition, new Vector2(top.transform.localPosition.x, 0f), Time.deltaTime * alignSpeed);
-                bot.transform.localPosition = Vector2.Lerp(bot.transform.localPosition, new Vector2(bot.transform.localPosition.x, 0f), Time.deltaTime * alignSpeed);
+                top.transform.position = Vector2.Lerp(top.transform.position, new Vector2(top.transform.position.x, 0f), Time.deltaTime * alignSpeed);
+                bot.transform.position = Vector2.Lerp(bot.transform.position, new Vector2(bot.transform.position.x, 0f), Time.deltaTime * alignSpeed);
 
                 if (!isZeroSet)
                 {
@@ -59,8 +59,8 @@ public class StartupController : MonoBehaviour
 
                 if(timer > sets[2])
                 {
-                    top.transform.localPosition = new Vector2(top.transform.localPosition.x, 0f);
-                    bot.transform.localPosition = new Vector2(bot.transform.localPosition.x, 0f);
+                    top.transform.position = new Vector2(top.transform.position.x, 0f);
+                    bot.transform.position = new Vector2(bot.transform.position.x, 0f);
 
                     Destroy(gameObject);
                 }

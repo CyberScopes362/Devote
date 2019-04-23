@@ -32,8 +32,8 @@ public class SubjectDropdownMenu : MonoBehaviour
 
         if(dateText != null)
         {
-            dateText.text = DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
-            dateTextExtended.text = DateTime.Now.DayOfWeek.ToString() + ", " + DateTime.Now.Day + " " + DateTime.Now.ToString("MMMM");
+            dateText.text = DateTime.Today.Day + "/" + DateTime.Today.Month + "/" + DateTime.Today.Year;
+            dateTextExtended.text = DateTime.Today.DayOfWeek.ToString() + ", " + DateTime.Today.Day + " " + DateTime.Today.ToString("MMMM");
             setDate = DateTime.Now;
         }
 
@@ -66,7 +66,7 @@ public class SubjectDropdownMenu : MonoBehaviour
     public void OpenDatePicker()
     {
 
-        AndroidPlugin.ShowDatePickerDialog(DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year, "dd/MM/yyyy", gameObject.name, "SetDate", "android:Theme.DeviceDefault.Light.Dialog.Alert");
+        AndroidPlugin.ShowDatePickerDialog(DateTime.Today.Day + "/" + DateTime.Today.Month + "/" + DateTime.Today.Year, "dd/MM/yyyy", gameObject.name, "SetDate", "android:Theme.DeviceDefault.Light.Dialog.Alert");
 
         /*  AndroidNativePopups.OpenDatePickerDialog(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day, 
           (int year, int month, int day) => 
@@ -94,9 +94,8 @@ public class SubjectDropdownMenu : MonoBehaviour
     {
         dateFormed = result;
         dateText.text = dateFormed;
-        //dateTextExtended.text = DateTime.ParseExact(result, "dd/MM/yyyy", CultureInfo.InstalledUICulture).ToString();
 
-        setDate = DateTime.ParseExact(result, "dd/MM/yyyy", CultureInfo.InstalledUICulture);
+        setDate = DateTime.ParseExact(result, "dd/MM/yyyy", CultureInfo.CurrentCulture);
         dateTextExtended.text = setDate.ToString("dddd") + ", " + setDate.Day + " " + setDate.ToString("MMMM");
     }
 }

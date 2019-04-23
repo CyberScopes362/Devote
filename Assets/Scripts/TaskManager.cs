@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
 using System.Collections;
-using AndNotify;
+using Assets.SimpleAndroidNotifications;
 
 public class TaskManager : MonoBehaviour
 {
@@ -16,7 +16,6 @@ public class TaskManager : MonoBehaviour
 
     public GameObject popupParent;
     public GameObject pageParent;
-    public GameObject notifObj;
 
     //Pages + Popups
     public GameObject[] allPages;
@@ -41,6 +40,9 @@ public class TaskManager : MonoBehaviour
     Vector2 posPopupHidden;
     Vector2 posPageHidden;
     Vector2 posCentre;
+    Vector2 posCentrePage;
+    public float posCentrePageY;
+    public float blindOffsetY;
 
     //Checks
     bool popupOut;
@@ -78,7 +80,6 @@ public class TaskManager : MonoBehaviour
     //Priority count
     public int priorityCount;
 
-
     void Awake()
     {
         LoadAllContent();
@@ -94,9 +95,7 @@ public class TaskManager : MonoBehaviour
             SetAllQuotes();
         }
         else
-        {
             quoteText.text = todaysQuote;
-        }
 
         SaveAllContent();
     }
@@ -111,14 +110,15 @@ public class TaskManager : MonoBehaviour
         foreach (Text dateT in dateText)
             dateT.text = DateTime.Now.ToString("dddd") + ", " + DateTime.Now.Day + " " + DateTime.Now.ToString("MMMM");
 
-        float centreOfScreenX = Screen.width / 2;
-        float centreOfScreenY = Screen.height / 2;
+        float centreOfScreenX = Screen.width / 2f;
+        float centreOfScreenY = Screen.height / 2f;
         float defaultSidePosX = Screen.width * 2f;
         float defaultBottomPosY = -Screen.height;
 
         posPopupHidden = new Vector2(defaultSidePosX, centreOfScreenY);
         posPageHidden = new Vector2(centreOfScreenX, defaultBottomPosY);
         posCentre = new Vector2(centreOfScreenX, centreOfScreenY);
+        posCentrePage = new Vector2(centreOfScreenX, centreOfScreenY * 2f);
 
         setPosPopup = posPopupHidden;
         setPosPage = posPageHidden;
@@ -136,8 +136,6 @@ public class TaskManager : MonoBehaviour
         UpdateProductivity();
         UpdatePriorityCount();
         SaveAllContent();
-
-        SetNotifications();
     }
 
     void Update()
@@ -158,7 +156,7 @@ public class TaskManager : MonoBehaviour
                 HideAllPopups();
             else
             {
-                if (setPosPage == posCentre)
+                if (setPosPage == posCentrePage)
                 {
                     HideAllPages();
                     actionController.ClearEntries();
@@ -183,138 +181,10 @@ public class TaskManager : MonoBehaviour
     //
     //
 
-
-
     public void SetNotifications()
     {
-        int ids = 0;
-        DateTime todaysDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-        DateTime tomorrowsDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day).AddDays(1);
-        //DateTime timeGap = DateTime.Today.AddHours(notifHours);
-        TimeSpan dueTime = DateTime.Today.AddHours(22) - DateTime.Now;
 
-
-        foreach (Homework x in homeworkTasks)
-        {
-            if(!x.isComplete)
-            {
-                if (x.dateSet == todaysDate)
-                {
-                    print("correct date");
-                    GameObject insNotif = Instantiate(notifObj);
-                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
-                    notifHolder.Title = "Homework Reminder";
-                    notifHolder.Content = "Incomplete " + x.subject + " homework " + x.heading + "due today.";
-                    notifHolder.notificationID = ids;
-
-                    notifHolder.Hours = dueTime.Hours;
-                    notifHolder.Minutes = dueTime.Minutes;
-                    notifHolder.Seconds = dueTime.Seconds;
-
-                    ids++;
-                }
-
-                if (x.dateSet == tomorrowsDate)
-                {
-                    GameObject insNotif = Instantiate(notifObj);
-                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
-
-                    notifHolder.Title = "Homework Reminder";
-                    notifHolder.Content = "Incomplete " + x.subject + " homework " + x.heading + "due tomorrow.";
-                    notifHolder.notificationID = ids;
-
-                    notifHolder.Hours = dueTime.Hours;
-                    notifHolder.Minutes = dueTime.Minutes;
-                    notifHolder.Seconds = dueTime.Seconds;
-                    ids++;
-                }
-
-                if (x.dateSet == tomorrowsDate.AddDays(1))
-                {
-                    GameObject insNotif = Instantiate(notifObj);
-                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
-                    notifHolder.Title = "Homework Reminder";
-                    notifHolder.Content = "Incomplete " + x.subject + " homework " + x.heading + "due in two days.";
-                    notifHolder.notificationID = ids;
-
-                    notifHolder.Hours = dueTime.Hours;
-                    notifHolder.Minutes = dueTime.Minutes;
-                    notifHolder.Seconds = dueTime.Seconds;
-                    ids++;
-                }
-            }
-        }
-
-        foreach (Assignment x in assignmentTasks)
-        {
-            if (x.completion < 100)
-            {
-                if (x.dateSet == todaysDate)
-                {
-                    GameObject insNotif = Instantiate(notifObj);
-                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
-                    notifHolder.Title = "Assignment Reminder";
-                    notifHolder.Content = x.completion + "% completed " + x.subject + " assignment " + x.heading + "due today.";
-                    notifHolder.notificationID = ids;
-
-                    notifHolder.Hours = dueTime.Hours;
-                    notifHolder.Minutes = dueTime.Minutes;
-                    notifHolder.Seconds = dueTime.Seconds;
-                    ids++;
-                }
-
-                if (x.dateSet == tomorrowsDate)
-                {
-                    GameObject insNotif = Instantiate(notifObj);
-                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
-                    notifHolder.Title = "Assignment Reminder";
-                    notifHolder.Content = x.completion + "% completed " + x.subject + " assignment " + x.heading + "due tomorrow.";
-                    notifHolder.notificationID = ids;
-
-                    notifHolder.Hours = dueTime.Hours;
-                    notifHolder.Minutes = dueTime.Minutes;
-                    notifHolder.Seconds = dueTime.Seconds;
-                    ids++;
-                }
-
-                if (x.dateSet == tomorrowsDate.AddDays(1))
-                {
-                    GameObject insNotif = Instantiate(notifObj);
-                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
-                    notifHolder.Title = "Assignment Reminder";
-                    notifHolder.Content = x.completion + "% completed " + x.subject + " homework " + x.heading + "due in two days.";
-                    notifHolder.notificationID = ids;
-
-                    notifHolder.Hours = dueTime.Hours;
-                    notifHolder.Minutes = dueTime.Minutes;
-                    notifHolder.Seconds = dueTime.Seconds;
-                    ids++;
-                }
-
-                if (x.dateSet == tomorrowsDate.AddDays(2))
-                {
-                    GameObject insNotif = Instantiate(notifObj);
-                    NotificationSetup notifHolder = insNotif.GetComponent<NotificationSetup>();
-                    notifHolder.Title = "Assignment Reminder";
-                    notifHolder.Content = x.completion + "% completed " + x.subject + " homework " + x.heading + "due in three days.";
-                    notifHolder.notificationID = ids;
-
-                    notifHolder.Hours = dueTime.Hours;
-                    notifHolder.Minutes = dueTime.Minutes;
-                    notifHolder.Seconds = dueTime.Seconds;
-                    ids++;
-                }
-            }
-        }
-
-
-
-        //
-        //  Problem is notifs will fail if user does not open app every day, so instead give an infinite reminder for every day for a week to get the user to check up manually to startup the notif system.
-        //
-        
     }
-
 
     public void UpdatePriorityCount()
     {
@@ -578,7 +448,11 @@ public class TaskManager : MonoBehaviour
         bf.Serialize(file, allData);
         file.Close();
 
-       // print("Saved");
+
+        //Set notifs aswell
+        SetNotifications();
+
+        // print("Saved");
     }
 
     public void LoadAllContent()
@@ -669,7 +543,7 @@ public class TaskManager : MonoBehaviour
     {
         HideAllPopups();
 
-        if (setPosPage == posCentre)
+        if (setPosPage == posCentrePage)
         {
             setPosPage = posPageHidden;
             StartCoroutine(PageShift(pageIndex));
@@ -677,7 +551,7 @@ public class TaskManager : MonoBehaviour
 
         if (!pageShifting)
         {
-            setPosPage = posCentre;
+            setPosPage = posCentrePage;
 
             for (int i = 1; i <= allPages.Length; i++)
             {

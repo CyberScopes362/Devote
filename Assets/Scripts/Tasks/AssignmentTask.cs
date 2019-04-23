@@ -26,7 +26,7 @@ public class AssignmentTask : MonoBehaviour
     public Button deleteButton;
     public Button editButton;
 
-    Color darkGreen;
+    Color compBlue;
     Color lightGrey;
     Color subjectColor;
     int parts;
@@ -52,7 +52,9 @@ public class AssignmentTask : MonoBehaviour
         actionController = initializer.actionController;
 
         lightGrey = new Color(0.75f, 0.75f, 0.75f);
-        darkGreen = new Color(0, 176f / 255f, 9f / 255f);
+        compBlue = new Color(0f / 255f, 173f / 255f, 0f / 255f);
+        //Set trans to completion fill col:
+        completionFill.color = new Color(completionFill.color.r, completionFill.color.g, completionFill.color.b, 80f / 255f);
 
         priorityBorder.color = Color.clear;
 
@@ -91,7 +93,7 @@ public class AssignmentTask : MonoBehaviour
                 letters[i - 1] = newLetter.GetComponent<Text>();
 
                 if (i <= completion.value)
-                    letters[i - 1].color = darkGreen;
+                    letters[i - 1].color = compBlue;
                 else
                     letters[i - 1].color = Color.grey;
 
@@ -101,14 +103,14 @@ public class AssignmentTask : MonoBehaviour
 
         //These must both also be executed on start otherwise there will be render flash with weird values.
         completionText.text = Mathf.CeilToInt((float)completion.value * (100f / parts)).ToString() + "%";
-        completionBG.color = Color.Lerp(lightGrey, Color.green, completion.value * (100f / parts) / 150f); //150 because we dont want a full green
+        completionBG.color = Color.Lerp(lightGrey, compBlue, completion.value * (100f / parts) / 150f); //150 because we dont want a full green
     }
 
     void Update()
     {
         //Ceil as a float value
         completionText.text = Mathf.CeilToInt((float)completion.value * (100f / parts)).ToString() + "%";
-        completionBG.color = Color.Lerp(lightGrey, Color.green, completion.value * (100f / parts) / 150f); //150 because we dont want a full green
+        completionBG.color = Color.Lerp(lightGrey, compBlue, completion.value * (100f / parts) / 150f); //150 because we dont want a full green
 
         if (extOptions)
             buttonMaskImage.fillAmount = Mathf.Lerp(buttonMaskImage.fillAmount, 1, 7f * Time.deltaTime);
@@ -163,7 +165,7 @@ public class AssignmentTask : MonoBehaviour
             for (int i = 1; i <= parts; i++)
             {
                 if (i <= completion.value)
-                    letters[i - 1].color = darkGreen;
+                    letters[i - 1].color = compBlue;
                 else
                     letters[i - 1].color = Color.grey;
             }
@@ -221,8 +223,6 @@ public class AssignmentTask : MonoBehaviour
             }
         }
     }
-
-
 
     public void OnClickEditMain()
     {

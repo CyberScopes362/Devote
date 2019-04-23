@@ -116,6 +116,8 @@ public class EditMarks : MonoBehaviour
                 markScript.avMarkText.color = markScript.graphLineController.avLineColor;
                 markScript.avMarkTextNo.color = markScript.graphLineController.avLineColor;
                 markScript.graphLineController.marks = thisMarks.ToArray();
+                markScript.graphLineController.marksValue = thisValue.ToArray();
+
 
                 var insMain = Instantiate(mainPrefab);
                 insMain.transform.SetParent(this.transform, false);

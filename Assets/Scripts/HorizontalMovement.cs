@@ -13,6 +13,9 @@ public class HorizontalMovement : MonoBehaviour
     public Image[] pageDots;
     public Color[] pageDotColours;
 
+    public Color greenColorFull;
+    public Color greenColorTrans;
+
     public Button rightButton;
     public Button leftButton;
 
@@ -92,9 +95,9 @@ public class HorizontalMovement : MonoBehaviour
         for (int i = 0; i < pageDotColours.Length; i++)
         {
             if (i == pageNumber)
-                pageDotColours[i] = Color.white;
+                pageDotColours[i] = greenColorFull;
             else
-                pageDotColours[i] = new Color(1f,1f,1f, 0.25f);
+                pageDotColours[i] = greenColorTrans;
         }
 
         changingColours = true;

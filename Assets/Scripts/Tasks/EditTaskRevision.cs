@@ -14,6 +14,9 @@ public class EditTaskRevision : MonoBehaviour
     public GameObject noRVObj;
 
     public Sprite[] subIconsForStudy;
+    public Color colorRevise;
+    public Color colorNotes;
+    public Color colorOngoing;
 
     Color setColor;
 
@@ -74,14 +77,41 @@ public class EditTaskRevision : MonoBehaviour
             revisionComponent.taskID = eachRevision.ID;
 
             //Set revision icon thingy
-            if(revisionComponent.mainText.text.Contains("<b><i>Revise"))
+            if(revisionComponent.mainText.text.Contains("<i>Revise"))
+            {
+                if (revisionComponent.mainText.text.Contains("<color=black><b><i>Revise: </i></b></color>"))
+                    revisionComponent.mainText.text = revisionComponent.mainText.text.Replace("<color=black><b><i>Revise: </i></b></color>", "");
+
+                if (revisionComponent.mainText.text.Contains("<color=black><b><i>Revise</i></b></color>"))
+                    revisionComponent.mainText.text = revisionComponent.mainText.text.Replace("<color=black><b><i>Revise</i></b></color>", "");
+
                 revisionComponent.subIcon.sprite = subIconsForStudy[0];
+                revisionComponent.subIcon.color = colorRevise;
+            }
 
-            if (revisionComponent.mainText.text.Contains("<b><i>Update Notes"))
+            if (revisionComponent.mainText.text.Contains("<i>Update Notes"))
+            {
+                if(revisionComponent.mainText.text.Contains("<color=navy><b><i>Update Notes: </i></b></color>"))
+                    revisionComponent.mainText.text = revisionComponent.mainText.text.Replace("<color=navy><b><i>Update Notes: </i></b></color>", "");
+
+                if (revisionComponent.mainText.text.Contains("<color=navy><b><i>Update Notes</i></b></color>"))
+                    revisionComponent.mainText.text = revisionComponent.mainText.text.Replace("<color=navy><b><i>Update Notes</i></b></color>", "");
+
                 revisionComponent.subIcon.sprite = subIconsForStudy[1];
+                revisionComponent.subIcon.color = colorNotes;
+            }
 
-            if (revisionComponent.mainText.text.Contains("<b><i>Ongoing Task"))
+            if (revisionComponent.mainText.text.Contains("<i>Ongoing Task"))
+            {
+                if (revisionComponent.mainText.text.Contains("<color=grey><b><i>Ongoing Task: </i></b></color>"))
+                    revisionComponent.mainText.text = revisionComponent.mainText.text.Replace("<color=grey><b><i>Ongoing Task: </i></b></color>", "");
+
+                if (revisionComponent.mainText.text.Contains("<color=grey><b><i>Ongoing Task</i></b></color>"))
+                    revisionComponent.mainText.text = revisionComponent.mainText.text.Replace("<color=grey><b><i>Ongoing Task</i></b></color>", "");
+
                 revisionComponent.subIcon.sprite = subIconsForStudy[2];
+                revisionComponent.subIcon.color = colorOngoing;
+            }
 
             var newRevision = Instantiate(revisionHolder);
             newRevision.transform.SetParent(gameObject.transform, false);

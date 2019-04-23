@@ -15,6 +15,7 @@ public class BlindController : MonoBehaviour
 
     Vector2 setPos;
     Vector2 refVector;
+    RectTransform thisRect;
     public float smoothAmount;
 
     public bool dragging;
@@ -22,17 +23,18 @@ public class BlindController : MonoBehaviour
 
     public float yPosTop;
     public float yPosBot;
-    public float ypsps;
 
-
-    void Start()
+    private void Start()
     {
-
+        //yPosTop = Screen.height * 2f;
+        thisRect = GetComponent<RectTransform>();
+        maxLocalY = yPosTop + 25f;
+        minLocalY = yPosBot - 25f;
     }
 
     void Update()
     {
-        if (transform.localPosition.y > (yPosTop + yPosBot) / 2f)
+        if (thisRect.anchoredPosition.y > (yPosTop + yPosBot) / 2f)
             blindOpen = false;
         else
             blindOpen = true;
@@ -42,27 +44,25 @@ public class BlindController : MonoBehaviour
     {
         if (!dragging)
         {
-            transform.localPosition = Vector2.SmoothDamp(transform.localPosition, setPos, ref refVector, smoothAmount, Mathf.Infinity, Mathf.Abs(touchSpeed) / 100f * Time.fixedDeltaTime);
+            thisRect.anchoredPosition = Vector2.SmoothDamp(thisRect.anchoredPosition, setPos, ref refVector, smoothAmount, Mathf.Infinity, Mathf.Abs(touchSpeed) / 100f * Time.fixedDeltaTime);
         }
         else
         {
             touchSpeed = Input.touches[0].deltaPosition.y / Input.touches[0].deltaTime;
 
-            transform.localPosition = new Vector2(transform.localPosition.x, transform.localPosition.y + (Input.touches[0].deltaPosition.y/1.525f));
+            thisRect.anchoredPosition = new Vector2(thisRect.anchoredPosition.x, thisRect.anchoredPosition.y + (Input.touches[0].deltaPosition.y/1.525f));
 
-            if (transform.localPosition.y <= maxLocalY - 25f)
-            {
-                transform.localPosition = new Vector2(transform.localPosition.x, yPosBot - 25f);
-                blindOpen = false;
-            }
+             if (thisRect.anchoredPosition.y >= maxLocalY)
+             {
+                 thisRect.anchoredPosition = new Vector2(thisRect.anchoredPosition.x, maxLocalY);
+                 blindOpen = false;
+             }
 
-            if (transform.localPosition.y >= minLocalY + 25f)
-            {
-                transform.localPosition = new Vector2(transform.localPosition.x, yPosTop + 25f);
-                blindOpen = true;
-            }
-
-            ypsps = Input.touches[0].deltaPosition.y;
+             if (thisRect.anchoredPosition.y <= minLocalY)
+             {
+                 thisRect.anchoredPosition = new Vector2(thisRect.anchoredPosition.x, minLocalY);
+                 blindOpen = true;
+             }
         }
     }
 
@@ -76,16 +76,16 @@ public class BlindController : MonoBehaviour
         if (Mathf.Abs(touchSpeed) > touchSpeedReq)
         {
             if (touchSpeed > 0)
-                setPos = new Vector2(transform.localPosition.x, yPosTop);
+                setPos = new Vector2(thisRect.anchoredPosition.x, yPosTop);
             else
-                setPos = new Vector2(transform.localPosition.x, yPosBot);
+                setPos = new Vector2(thisRect.anchoredPosition.x, yPosBot);
         }
         else
         {
-            if(transform.position.y >= (yPosTop + yPosBot) / 2)
-                setPos = new Vector2(transform.localPosition.x, yPosTop);
+            if(thisRect.anchoredPosition.y >= (yPosTop + yPosBot) / 2)
+                setPos = new Vector2(thisRect.anchoredPosition.x, yPosTop);
             else
-                setPos = new Vector2(transform.localPosition.x, yPosBot);
+                setPos = new Vector2(thisRect.anchoredPosition.x, yPosBot);
 
             touchSpeed = 1000f;
         }

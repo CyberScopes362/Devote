@@ -119,9 +119,9 @@ public class EditTaskHomework : MonoBehaviour
             if(dateSetFixed < todaysDate)
             {
                 if (dateSetFixed == yesterdaysDate)
-                    homeworkComponent.dateText.text = "Overdue (Due Yesterday)";
+                    homeworkComponent.dateText.text = "Overdue - Due Yesterday";
                 else
-                    homeworkComponent.dateText.text = "Overdue (Due on " + eachHomework.dateSet.ToString("dddd") + ", " + eachHomework.dateSet.Day + " " + eachHomework.dateSet.ToString("MMMM") + ")";
+                    homeworkComponent.dateText.text = "Overdue - Due on " + eachHomework.dateSet.ToString("dddd") + ", " + eachHomework.dateSet.Day + " " + eachHomework.dateSet.ToString("MMMM");
 
                 homeworkComponent.dateText.color = Color.red;
             }
